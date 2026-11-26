@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Jugendwochenende FECG-Bruchmühlbach</title>
+<style>
+:root {
+  color-scheme: light;
+  --bg: #f4f1ea;
+  --surface: #ffffff;
+  --text: #25292a;
+  --muted: #6a706f;
+  --accent: #2d6b5a;
+  --accent-text: #ffffff;
+  --accent-soft: #e2efea;
+  --border: #e2ddd2;
+  --shadow: 0 1px 2px rgba(0,0,0,.05), 0 6px 18px rgba(0,0,0,.05);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #161918;
+    --surface: #212524;
+    --text: #eceae4;
+    --muted: #9ea4a2;
+    --accent: #7cc3ae;
+    --accent-text: #0f1f1a;
+    --accent-soft: #263630;
+    --border: #353b39;
+    --shadow: none;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #161918;
+  --surface: #212524;
+  --text: #eceae4;
+  --muted: #9ea4a2;
+  --accent: #7cc3ae;
+  --accent-text: #0f1f1a;
+  --accent-soft: #263630;
+  --border: #353b39;
+  --shadow: none;
+}
+:root {
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+*, *::before, *::after { box-sizing: inherit; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 1rem;
+  line-height: 1.55;
+  min-height: 100%;
+}
+main { max-width: 30rem; margin: 0 auto; padding: 2.2rem 1.2rem 3rem; }
+h1 {
+  font-size: 1.7rem;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.35rem;
+  color: var(--text);
+}
+.lead { color: var(--muted); margin: 0 0 1.6rem; font-size: 0.98rem; }
+.lead a { color: var(--accent); font-weight: 600; text-decoration: none; border-bottom: 1px solid var(--accent-soft); }
+.view[hidden] { display: none; }
+.choices { display: grid; gap: 0.75rem; }
+button.choice {
+  appearance: none;
+  width: 100%;
+  text-align: left;
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.05rem 1.15rem;
+  font: inherit;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: border-color .15s, transform .05s;
+}
+button.choice:hover, button.choice:focus-visible { border-color: var(--accent); outline: none; }
+button.choice:active { transform: scale(0.99); }
+button.choice[disabled] { opacity: .5; cursor: default; }
+button.choice strong { display: block; font-size: 1.08rem; color: var(--accent); margin-bottom: 0.15rem; }
+button.choice span { color: var(--muted); font-size: 0.92rem; }
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.25rem 1.2rem;
+  box-shadow: var(--shadow);
+}
+.panel h2 { margin: 0 0 0.5rem; font-size: 1.2rem; color: var(--accent); }
+.panel p { margin: 0.5rem 0; }
+.panel ul { padding-left: 1.2rem; margin: 0.4rem 0 0; }
+.panel li { margin-bottom: 0.5rem; }
+.btn, button.btn {
+  appearance: none;
+  display: block;
+  width: 100%;
+  text-align: center;
+  background: var(--accent);
+  color: var(--accent-text);
+  text-decoration: none;
+  border: none;
+  border-radius: 12px;
+  padding: 0.85rem 1rem;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 0.6rem 0 0.4rem;
+}
+.back {
+  appearance: none;
+  background: none;
+  border: none;
+  color: var(--muted);
+  font: inherit;
+  font-size: 0.95rem;
+  padding: 0.3rem 0;
+  margin-bottom: 0.9rem;
+  cursor: pointer;
+}
+.back:hover { color: var(--accent); }
+.hint { margin-top: 1.1rem; font-size: 0.88rem; color: var(--muted); }
+#gastgeber-liste p { margin: 0.4rem 0; }
+#gastgeber-liste button.choice { margin-top: 0.5rem; }
+.auswahl { color: var(--accent); font-weight: 600; }
+[hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<main>
+
+  <div id="start" class="view">
+
+    <h1>Jugendwochenende FECG-Bruchmühlbach</h1>
+    <p class="lead">27.11.2026 bis 29.11.2026 · <a href="https://maps.app.goo.gl/dqP2V9wz3rEMH5tG7?g_st=ic" target="_blank" rel="noopener">Industriestraße 11b</a></p>
+    <div class="choices">
+      <button class="choice" data-target="info">
+        <strong>Informationen</strong>
+        <span>Treffpunkt, Programm und Zeiten.</span>
+      </button>
+      <button class="choice" data-target="gastgeber">
+        <strong>Ich bin Gastgeber</strong>
+        <span>Ich nehme einen Jugendlichen für das Wochenende auf.</span>
+      </button>
+      <button class="choice" data-target="gast">
+        <strong>Ich bin Gast</strong>
+        <span>Ich bin Jugendlicher oder Elternteil und möchte Infos zum Wochenende.</span>
+      </button>
+    </div>
+  </div>
+
+  <div id="gastgeber" class="view" hidden>
+    <button class="back" data-target="start">← Zurück</button>
+    <div class="panel">
+      <h2>Gastgeber werden</h2>
+      <p>Schön, dass du dabei bist. So funktioniert die Anmeldung:</p>
+      <ul>
+        <li>Fülle das Anmeldeformular aus (Wohnort, Schlafplätze, Wünsche und Hinweise).</li>
+        <li>Die Jugendlichen melden sich danach bei dir.</li>
+        
+      </ul>
+      <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSc9XAKdfAtwxuh0JnKq9zVMw9BWmp2FNR49ofsoriyrE6eWzg/viewform">Zum Anmeldeformular</a>
+      <p class="hint">Fragen? Kontakt Leitung: David Otto, 017643543907</p>
+    </div>
+  </div>
+
+  <div id="gast" class="view" hidden>
+    <button class="back" data-target="start">← Zurück</button>
+    <div class="panel">
+      <h2>Infos für dich</h2>
+      
+      
+      
+      <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSdhHnobTT1VDkQAdsdSkXrFTm1CvN9NByYWDVuSzL6i6qXhEA/viewform">Gruppe wählen</a>
+      
+      <p class="hint">Fragen? Kontakt Leitung: David Otto, 017643543907</p>
+    </div>
+  </div>
+
+<div id="gast-host" class="view" hidden>
+    <button class="back" data-target="gast">← Zurück</button>
+    <div class="panel">
+      <h2>Informationen über den Gastgeber</h2>
+      <p>Deine Gastfamilie erfährst du persönlich von der Leitung. Aus Datenschutzgründen stehen Namen und Kontaktdaten der Gastgeber nicht auf dieser Seite.</p>
+      <p>Melde dich bei deiner Gastfamilie, sobald eure Gruppe feststeht.</p>
+      <p class="hint">Fragen? Kontakt Leitung: David Otto, 017643543907</p>
+    </div>
+  </div>
+
+  <div id="gruppe" class="view" hidden>
+    <button class="back" data-target="gast">← Zurück</button>
+    <div class="panel">
+      <h2>Meine Gruppe</h2>
+      <p>Wer seid ihr? Bitte wähle eure Gruppe aus.</p>
+      <div class="choices">
+        <button class="choice" type="button" data-gruppe="2 Mädels">
+          <strong>2 Mädels</strong>
+          
+        </button>
+        <button class="choice" type="button" data-gruppe="2 Jungs">
+          <strong>2 Jungs</strong>
+        </button>
+        <button class="choice" type="button" data-gruppe="3 Jungs">
+          <strong>3 Jungs</strong>
+        </button>
+      </div>
+      <p id="gruppe-ergebnis" class="hint"></p>
+      <div id="gastgeber-liste"></div>
+    </div>
+  </div>
+
+  <div id="info" class="view" hidden>
+    <button class="back" data-target="start">← Zurück</button>
+    <div class="panel" style="margin-bottom:1rem">
+    <h2 style="margin:0 0 0.6rem;font-size:1.25rem;color:var(--accent)">Ablauf</h2>
+    <ol class="ablauf">
+      <li><strong>[Freitag, Uhrzeit]:</strong> Treffpunkt und Abfahrt zu den Gastfamilien.</li>
+      <li><strong>[Freitag, Uhrzeit]:</strong> Ankommen bei den Gastgebern, gemeinsames Abendessen.</li>
+      <li><strong>[Samstag]:</strong> Programm mit der Gruppe, Mittagessen in der Gruppe.</li>
+      <li><strong>[Sonntag, Uhrzeit]:</strong> Abschlussrunde und Abholung.</li>
+    </ol>
+    <p class="note">Die genaue Zuordnung zu den Gastfamilien erhältst du persönlich von der Leitung.</p>
+  </div>
+  </div>
+
+</main>
+<script>
+  function show(id) {
+    document.querySelectorAll('.view').forEach(function (v) {
+      v.hidden = v.id !== id;
+    });
+    window.scrollTo(0, 0);
+  }
+  document.querySelectorAll('[data-target]').forEach(function (el) {
+    el.addEventListener('click', function () {
+      show(el.getAttribute('data-target'));
+    });
+  });
+  document.querySelectorAll('[data-gruppe]').forEach(function (el) {
+    el.addEventListener('click', async function () {
+      var gruppe = el.getAttribute('data-gruppe');
+      var out = document.getElementById('gruppe-ergebnis');
+      out.textContent = 'Wird gespeichert …';
+      try {
+        var db = await window.claude.use('db');
+        if (!db) { throw new Error('nodb'); }
+        var id = 'gast_' + Date.now().toString(36) + '_' + Math.random().toString(36).slice(2, 8);
+        await db.collection('gaeste').doc(id).set({ gruppe: gruppe, eingegangen: new Date().toISOString() });
+        out.textContent = 'Eure Gruppe: ' + gruppe + '. Eure Gastfamilie teilt euch die Leitung persönlich mit.';
+      } catch (err) {
+        out.textContent = 'Eure Gruppe: ' + gruppe + '. Das Speichern hat nicht geklappt, bitte meldet es der Leitung.';
+      }
+    });
+  });
+  // Wird aus den Gastgeber-Anmeldungen befüllt. Nur Vorname, Ort und Gruppe, keine Kontaktdaten.
+  var GASTGEBER = [];
+
+  document.querySelectorAll('[data-gruppe]').forEach(function (el) {
+    el.addEventListener('click', function () {
+      var gruppe = el.getAttribute('data-gruppe');
+      var liste = document.getElementById('gastgeber-liste');
+      liste.textContent = '';
+      var treffer = GASTGEBER.filter(function (g) { return g.gruppe === gruppe; });
+      var kopf = document.createElement('p');
+      kopf.textContent = treffer.length
+        ? 'Gastgeber für ' + gruppe + ':'
+        : 'Für ' + gruppe + ' gibt es noch keine Gastgeber. Bitte frag die Leitung.';
+      liste.appendChild(kopf);
+      treffer.forEach(function (g) {
+        var p = document.createElement('p');
+        p.textContent = g.vorname + ' aus ' + g.ort;
+        liste.appendChild(p);
+      });
+    });
+  });
+</script>
+</body>
+</html>
